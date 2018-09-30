@@ -4,11 +4,13 @@ package main
 import (
 	"./database/Redis"
 	"./routes"
+	"./settings"
 	"net/http"
 )
 
 func main() {
 	redis.Init()
+	settings.Init()
 	r := routes.InitRoutes()
 
 	// Our application will run on port 3000. Here we declare the port and pass in our router.
