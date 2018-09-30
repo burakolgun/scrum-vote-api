@@ -1,7 +1,7 @@
 package models
 
-type Tenant struct {
+type Team struct {
+	uuid        string
 	name        string
-	ownerUUID   string
 	description string
 }

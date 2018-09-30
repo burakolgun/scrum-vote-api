@@ -3,10 +3,15 @@ package models
 import "github.com/go-ozzo/ozzo-validation"
 
 type User struct {
-	uuid     string
+	UUID     string
 	username string
 	password string
 	email    string
+}
+
+type identity interface {
+	GetID() string
+	GetName() string
 }
 
 func (m User) Validate() error {
@@ -14,4 +19,12 @@ func (m User) Validate() error {
 		validation.Field(&m.username, validation.Required, validation.Length(0, 120)),
 		validation.Field(&m.email, validation.Required),
 	)
+}
+
+func (m User) GetID() string {
+	return m.UUID
+}
+
+func (m User) GetName() string {
+	return m.username
 }
