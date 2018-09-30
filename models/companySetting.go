@@ -1,5 +1,5 @@
 package models
 
 type CompanySetting struct {
-	uuid string
+	UUID string
 }

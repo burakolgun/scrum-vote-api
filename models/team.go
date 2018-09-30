@@ -1,7 +1,7 @@
 package models
 
 type Team struct {
-	uuid        string
-	name        string
-	description string
+	UUID        string
+	Name        string
+	Description string
 }

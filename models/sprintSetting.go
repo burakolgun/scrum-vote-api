@@ -1,5 +1,5 @@
 package models
 
 type SprintSetting struct {
-	uuid string
+	UUID string
 }

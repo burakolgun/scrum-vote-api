@@ -4,9 +4,9 @@ import "github.com/go-ozzo/ozzo-validation"
 
 type User struct {
 	UUID     string
-	username string
-	password string
-	email    string
+	UserName string
+	Password string
+	Email    string
 }
 
 type identity interface {
@@ -16,8 +16,8 @@ type identity interface {
 
 func (m User) Validate() error {
 	return validation.ValidateStruct(&m,
-		validation.Field(&m.username, validation.Required, validation.Length(0, 120)),
-		validation.Field(&m.email, validation.Required),
+		validation.Field(&m.UserName, validation.Required, validation.Length(0, 120)),
+		validation.Field(&m.Email, validation.Required),
 	)
 }
 
@@ -26,5 +26,5 @@ func (m User) GetID() string {
 }
 
 func (m User) GetName() string {
-	return m.username
+	return m.UserName
 }
