@@ -1,0 +1,6 @@
+postgres:
+  POSTGRES_USER:     scrum-vote
+  POSTGRES_DB:       scrum-vote
+  POSTGRES_PASSWORD: 1111
+  HOST:              localhost
+  PORT:              3306
