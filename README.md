@@ -6,6 +6,7 @@ For development -> `go run server.go`
 
 ## Routes 
    /login
+   
    /register
 ### Auth Routes 
   /test/hello
