@@ -3,10 +3,10 @@ package models
 import "github.com/go-ozzo/ozzo-validation"
 
 type User struct {
-	UUID     string
-	UserName string
-	Password string
-	Email    string
+	UUID     string `json:"uuid" form:"-"`
+	UserName string `json:"username" form:"username"`
+	Password string	`json:"password" form:"password"`
+	Email    string	`json:"email" form:"email"`
 }
 
 type identity interface {
@@ -17,7 +17,6 @@ type identity interface {
 func (m User) Validate() error {
 	return validation.ValidateStruct(&m,
 		validation.Field(&m.UserName, validation.Required, validation.Length(0, 120)),
-		validation.Field(&m.Email, validation.Required),
 	)
 }
 

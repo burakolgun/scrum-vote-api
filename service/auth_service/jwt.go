@@ -65,6 +65,8 @@ func (backend *JWTAuthenticationBackend) Authenticate(user *models.User) bool {
 		Password: string(hashedPassword),
 	}
 
+
+	fmt.Println(user.UserName == testUser.UserName)
 	return user.UserName == testUser.UserName && bcrypt.CompareHashAndPassword([]byte(testUser.Password), []byte(user.Password)) == nil
 }
 
