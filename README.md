@@ -7,7 +7,9 @@ If you want to just run -> just write the `/.server` or click server doc in api 
 For development -> `go run server.go`
 
 ## Routes
-   /token-auth -> POST (username = scrum, password = vote)
+   /login -> POST (username = scrum, password = vote)
+   
+   /refresh-token
    
    /register   -> POST
 ### Auth Routes 
