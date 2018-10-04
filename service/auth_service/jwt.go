@@ -1,9 +1,9 @@
 package auth_service
 
 import (
+	"../../database/redis"
 	"../../models"
 	"../../settings"
-	"../redis"
 	"bufio"
 	"crypto/rsa"
 	"crypto/x509"
@@ -64,7 +64,6 @@ func (backend *JWTAuthenticationBackend) Authenticate(user *models.User) bool {
 		UserName: "scrum",
 		Password: string(hashedPassword),
 	}
-
 
 	fmt.Println(user.UserName == testUser.UserName)
 	return user.UserName == testUser.UserName && bcrypt.CompareHashAndPassword([]byte(testUser.Password), []byte(user.Password)) == nil
