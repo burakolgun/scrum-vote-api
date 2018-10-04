@@ -1,6 +1,7 @@
 package redis
 
 import (
+	"fmt"
 	"github.com/garyburd/redigo/redis"
 )
 
@@ -11,18 +12,14 @@ type RedisCli struct {
 var instanceRedisCli *RedisCli = nil
 
 func Connect() (conn *RedisCli) {
+	fmt.Println(instanceRedisCli)
 	if instanceRedisCli == nil {
 		instanceRedisCli = new(RedisCli)
 		var err error
 
-		instanceRedisCli.conn, err = redis.Dial("tcp", ":6379")
+		instanceRedisCli.conn, err = redis.Dial("tcp", ":6003")
 
 		if err != nil {
-			panic(err)
-		}
-
-		if _, err := instanceRedisCli.conn.Do("AUTH", "Brainattica"); err != nil {
-			instanceRedisCli.conn.Close()
 			panic(err)
 		}
 	}
