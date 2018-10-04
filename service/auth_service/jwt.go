@@ -57,11 +57,11 @@ func (backend *JWTAuthenticationBackend) GenerateToken(userUUID string) (string,
 }
 
 func (backend *JWTAuthenticationBackend) Authenticate(user *models.User) bool {
-	hashedPassword, _ := bcrypt.GenerateFromPassword([]byte("testing"), 10)
+	hashedPassword, _ := bcrypt.GenerateFromPassword([]byte("vote"), 10)
 
 	testUser := models.User{
 		UUID:     uuid.New(),
-		UserName: "haku",
+		UserName: "scrum",
 		Password: string(hashedPassword),
 	}
 
