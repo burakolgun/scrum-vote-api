@@ -4,11 +4,11 @@ If you want to just run -> just write the `/.server` or click server doc in api 
 
 For development -> `go run server.go`
 
-## Routes 
-   /login
+## Routes
+   /token-auth -> POST (username = scrum, password = vote)
    
-   /register
+   /register   -> POST
 ### Auth Routes 
-  /test/hello
+  /test/hello  -> GET
   
 ###
