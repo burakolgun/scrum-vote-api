@@ -5,14 +5,17 @@ import (
 	services "../service/auth_service"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"net/http"
 )
 
 func Register(w http.ResponseWriter, r *http.Request) {
-	body, _ := ioutil.ReadAll(r.Body)
-	fmt.Printf("%v", body)
-	w.Write(body)
+	fmt.Println("here")
+	requestUser := new(models.User)
+	decoder := json.NewDecoder(r.Body)
+	decoder.Decode(&requestUser)
+	fmt.Printf("%v", requestUser)
+	_, err :=requestUser.Store()
+	w.Write([]byte(err.Error()))
 }
 
 func Login(w http.ResponseWriter, r *http.Request) {

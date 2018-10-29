@@ -4,3 +4,6 @@ postgres:
   POSTGRES_PASSWORD: 1111
   HOST:              localhost
   PORT:              3306
+
+redis:
+  PORT:              6003

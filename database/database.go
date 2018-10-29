@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"time"
 
 	"github.com/go-yaml/yaml"
 
@@ -23,6 +24,8 @@ type Config = struct {
 }
 
 var Conf *Config
+
+var DB *sql.DB
 
 func Init() {
 	dir, err := os.Getwd()
@@ -47,20 +50,28 @@ func Init() {
 }
 
 func Connect() (*sql.DB, error) {
+
+	time.Sleep(time.Second * 10)
+	fmt.Println("sleep1")
+	if DB != nil {
+		return DB, nil
+		fmt.Println("already connected")
+	}
+
 	fmt.Println("Connection Opening...")
 	connStr := "user=" + Conf.Postgres.PostgresUser + " " +
 		"dbname=" + Conf.Postgres.PostgresDB + " " +
 		"password=" + Conf.Postgres.PostgresPassword + " " +
 		"port=" + Conf.Postgres.PostgresPort + " " +
 		"sslmode=disable"
-	db, err := sql.Open("postgres", connStr)
+	DB, err := sql.Open("postgres", connStr)
 	if err != nil {
 		return nil, err
 	}
 
-	defer db.Close()
+	defer DB.Close()
 
-	err = db.Ping()
+	err = DB.Ping()
 
 	if err != nil {
 		return nil, err
@@ -68,5 +79,5 @@ func Connect() (*sql.DB, error) {
 
 	fmt.Println("Connection Opened")
 
-	return db, nil
+	return DB, nil
 }
