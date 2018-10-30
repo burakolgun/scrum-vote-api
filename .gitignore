@@ -22,3 +22,9 @@
 gin-bin
 */gin-bin
 /*/gin-bin
+
+
+### IntelliJ
+/.idea
+.idea/*
+*/.idea
